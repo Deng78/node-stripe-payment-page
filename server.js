@@ -9,7 +9,7 @@ const app = express();
 const stripe = require("stripe")(keySecret);
 
 // body parser middleware
-app.use(bodyParser.urlencoded({extented:false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static('public'))
 
