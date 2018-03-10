@@ -86,4 +86,24 @@ app.post('/charge', (req,res) =>{
   })
 })
 
+app.get('/customers', (req, res) => {
+  Customer.find(function(error, document) {
+      if (error || !document) {
+        console.log(error)
+      } else {
+            res.send(document);
+          }
+  })
+})
+
+app.get('/transactions', (req, res) => {
+  Transaction.find(function(error, document) {
+      if (error || !document) {
+        console.log(error)
+      } else {
+            res.send(document);
+          }
+  })
+})
+
 app.listen(8080, () => console.log('server started on port 8080'))

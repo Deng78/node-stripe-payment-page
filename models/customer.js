@@ -9,13 +9,11 @@ const CustomerSchema = new mongoose.Schema({
     },
     firstName: {
         type: String,
-        unique: true,
         required: true,
         trim: true
       },
       lastName: {
         type: String,
-        unique: true,
         required: true,
         trim: true
       },
@@ -25,6 +23,11 @@ const CustomerSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
+    createdAt: {
+        type: Date,
+        default: new Date
+    }
+
 
 });
 
