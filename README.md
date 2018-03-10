@@ -8,7 +8,10 @@
 # Install dependencies
 npm install
 
-# Run App
+# Run App in Development mode
+npm run dev
+
+# Run App in Production mode
 npm start
 ```
 

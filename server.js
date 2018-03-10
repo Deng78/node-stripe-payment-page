@@ -4,6 +4,11 @@ const db = require('mongoose');
 const path = require('path');
 const pug = require('pug');
 
+const port = process.env.PORT || 8080;
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').load();
+}
+
 const Customer = require('./models/customer.js')
 const Transaction = require('./models/transaction.js')
 
@@ -17,7 +22,7 @@ const stripe = require("stripe")(keySecret);
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Connect to DB
-db.connect('mongodb://localhost:27017/payment', (err, db) =>{
+db.connect(process.env.DB_URI, (err, db) =>{
   if(err){ 
       throw err
   }

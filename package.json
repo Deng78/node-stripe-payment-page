@@ -4,12 +4,14 @@
   "description": "Payment app with Express, Mongo DB, Pug & Stripe API",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "NODE_ENV=production node server.js",
+    "dev": "node server.js"
   },
   "author": "Deng Neyal",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "dotenv": "^5.0.1",
     "express": "^4.16.2",
     "mongoose": "^5.0.8",
     "pug": "^2.0.1",
