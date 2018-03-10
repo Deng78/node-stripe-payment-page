@@ -127,4 +127,4 @@ app.get('/transactions', (req, res) => {
   })
 })
 
-app.listen(8080, () => console.log('server started on port 8080'))
+app.listen(port, () => console.log(`server started on port: ${port}`))
