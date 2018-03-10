@@ -115,7 +115,6 @@ app.get('/transactions', (req, res) => {
       if (error || !document) {
         console.log(error)
       } else {
-          console.log(document)
             res.render('transactions', {
               transactions: document
             })
