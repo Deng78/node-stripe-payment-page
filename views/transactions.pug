@@ -1,0 +1,41 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(http-equiv='X-UA-Compatible', content='ie=edge')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm', crossorigin='anonymous')
+    title View Transactions
+  body
+    .container.mt-4
+      .btn-group(role='group')
+        a.btn.btn-secondary(href='/customers') Customers
+        a.btn.btn-primary(href='/transactions') Transactions
+      hr
+      h2 Transactions
+      table.table.table-striped
+        thead
+          tr
+            th Transaction ID
+            th Customer
+            th Product
+            th Amount
+            th Date
+        tbody#output
+          each transaction in transactions
+            - transaction.amount = transaction.amount / 100
+            tr
+              td #{transaction.id}
+              td #{transaction.customerID}
+              td #{transaction.product}
+              td #{transaction.amount.toFixed(2)} #{transaction.currency.toUpperCase()}              
+              td #{transaction.createdAt}
+
+
+
+            
+
+      br
+      p
+        a(href='/') Pay Page
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js')

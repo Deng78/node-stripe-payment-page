@@ -1,0 +1,24 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(http-equiv='X-UA-Compatible', content='ie=edge')
+    title Document
+    link(rel='stylesheet', href='style.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm', crossorigin='anonymous')
+  body
+    .container
+      h2.my-4.text-center Product Name [$50]
+      form#payment-form(action='/charge', method='post')
+        .form-row
+          input.form-control.mb-3.Stripe-Element.Stripe-Element--empty(type='text', name='firstName', placeholder='First Name')
+          input.form-control.mb-3.Stripe-Element.Stripe-Element--empty(type='text', name='lastName', placeholder='Last Name')
+          input.form-control.mb-3.Stripe-Element.Stripe-Element--empty(type='text', name='email', placeholder='Email Address')
+          #card-element.form-control
+            // A Stripe Element will be inserted here.
+          // Used to display form errors.
+          #card-errors(role='alert')
+        button(type='submit') Submit Payment
+    script(src='https://js.stripe.com/v3/')
+    script(src='./charge.js')

@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('mongoose');
+const path = require('path');
+const pug = require('pug');
 
 const Customer = require('./models/customer.js')
 const Transaction = require('./models/transaction.js')
@@ -23,10 +25,19 @@ db.connect('mongodb://localhost:27017/payment', (err, db) =>{
 db.connection.on('connected', () => console.log(`Database Connected`))
 db.connection.on('error', (err) => console.log(`Error: ${err}`))
 
+// PUG 
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "pug");
+app.get('/', (req, res) =>{
+  res.render("index");
+})
+
 app.use(express.static('public'))
 app.get('/success', (req,res) =>{
     let query = req.query;
-    res.send(query)
+    res.render('success', {
+      transaction: req.query
+    })
 })
 
 app.post('/charge', (req,res) =>{
@@ -91,7 +102,10 @@ app.get('/customers', (req, res) => {
       if (error || !document) {
         console.log(error)
       } else {
-            res.send(document);
+            // res.send(document);
+            res.render('customers', {
+              customers: document
+            })
           }
   })
 })
@@ -101,7 +115,10 @@ app.get('/transactions', (req, res) => {
       if (error || !document) {
         console.log(error)
       } else {
-            res.send(document);
+          console.log(document)
+            res.render('transactions', {
+              transactions: document
+            })
           }
   })
 })
