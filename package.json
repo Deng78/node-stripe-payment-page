@@ -1,7 +1,7 @@
 {
   "name": "node-stripe-payment-page",
   "version": "1.0.0",
-  "description": "",
+  "description": "Payment app with Express, Mongo DB, Pug & Stripe API",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
